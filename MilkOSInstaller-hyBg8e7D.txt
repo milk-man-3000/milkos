@@ -1,0 +1,33 @@
+-- MilkOS Setup by Milk_man_3000
+
+-- Functions
+function getRawAndSave(pastebinCode, savePath)
+ write("[WORK] Downloading ".. pastebinCode .. "... ");
+ local downloadRequest = http.get("http://www.pastebin.com/raw/".. pastebinCode);
+ local fileOutput = downloadRequest.readAll();
+ local fileWriter = fs.open(savePath, "w");
+ fileWriter.write(fileOutput);
+ fileWriter.close();
+ print("done.");
+end
+
+-- Main Setup
+write("Are you sure do you want to install it (y/n): ");
+local installQ = read();
+if installQ == "y" or installQ == "Y" then
+ print("[WORK] Configurating folders...");
+ fs.makeDir("/milkos");
+ fs.makeDir("/milkos/apis");
+ print("[WORK] Getting files...");
+ getRawAndSave("gQBtkw7f", "/milkos/core.lua");
+ getRawAndSave("UP8Qmqgc", "/milkos/apis/messages");
+ getRawAndSave("KuM2EztY", "/milkos/apis/stringapi");
+ getRawAndSave("3NDGjQGc", "/milkos/apis/filesystem");
+ print("[CONF] Configurating startup...");
+ getRawAndSave("gQBtkw7f", "startup");
+ print("[DONE] Installing BunduOS done. Rebooting in 5 seconds...");
+ sleep(5);
+ os.reboot();
+else
+ print("[INFO] Installation aborted.");
+end
