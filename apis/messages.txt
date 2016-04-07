@@ -1,0 +1,36 @@
+-- Kernel messages API for MILKOS Core by Redall
+
+-- Begin Functions
+function info(message)
+ print("[INFO] ".. message);
+end
+
+function warn(message)
+ term.setTextColor(colors.orange);
+ print("[WARN] ".. message);
+ term.setTextColor(colors.white);
+end
+
+function alert(message)
+ term.setTextColor(colors.red);
+ print("[ !! ] ".. message);
+ term.setTextColor(colors.white);
+end
+
+function done(message)
+ term.setTextColor(colors.green);
+ print("[DONE] ".. message);
+ term.setTextColor(colors.white);
+end
+
+function suggest(message)
+ term.setTextColor(colors.lightGray);
+ print("[ ii ] ".. message);
+ term.setTextColor(colors.white);
+end
+
+function work(message)
+ term.setTextColor(colors.blue);
+ print("[WORK] ".. message);
+ term.setTextColor(colors.white);
+end
